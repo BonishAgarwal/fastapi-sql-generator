@@ -45,11 +45,29 @@ The application works with the following schema:
    ```bash
    pip install -r requirements.txt
 
-3. **Run the application**:
+3. **Create a new virtual environment**:
+   ```bash
+   python3 -m venv .venv
+
+4. **Activate the virtual environment**:
+   ```bash
+   source .venv/bin/activate
+
+5. **Add environment variables**:
+   ```bash
+   AZURE_ENDPOINT = "https://xxxx.openai.azure.com/"
+
+   AZURE_OPENAI_DEPLOYMENT = "gpt-**"
+
+   OPENAI_API_VERSION = "******"
+
+   OPENAI_API_KEY = "78**" 
+
+6. **Run the application**:
    ```bash
    uvicorn main:app --port 8080 --reload
 
-4. **Access the API**:
+7. **Access the API**:
    ```bash
    http://localhost:8080
    ```
