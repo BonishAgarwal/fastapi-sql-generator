@@ -72,4 +72,21 @@ The application works with the following schema:
    http://localhost:8080
    ```
 
+8. **Test the API**:
+   ```bash
+   curl -X POST -H "Content-Type: application/json" -d '{"instruction": "Add a new student named John Smith with ID 1234."}' http://localhost:8080/process-instruction
+
+9. **Testing Instructions**:
+   - Add a new student named John Smith with ID 1234.
+   - Get the student with ID 1234.
+   - Add scores for the student with ID 1234.
+   - Get scores for the student with ID 1234.
+   - Get subjects for the student with ID 1234.
+   - Summarize data for the student with ID 1234.
+   - Added score 90 for subject Math for the student with ID 1234.
+   - Added score 80 for subject Science for the student with ID 1234.
+   - Added score 70 for subject English for the student with ID 1234.
+   - Get the average score for the student with ID 1234.
+   - Get the average score for each subject.
+
 ---
