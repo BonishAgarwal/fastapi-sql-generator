@@ -33,7 +33,7 @@ async def process_professor_instruction(request: InstructionRequest):
     elif intent == "summarizing_data":
         return summarize_scores(query)
     else:
-        raise HTTPException(status_code=400, detail="Unrecognized intent")
+        return execute_query(query)
 
 @router.post("/add_student")
 def add_student(query: str):
@@ -99,5 +99,16 @@ def summarize_scores(query: str):
             cur.execute(query)
             conn.commit()  # Commit the transaction
         return JSONResponse(content="Scores summarized", status_code=200)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+@router.post("/execute_query")
+def execute_query(query: str):
+    conn = get_connection()
+    try:
+        with conn.cursor() as cur:  
+            cur.execute(query)
+            conn.commit()  # Commit the transaction
+        return JSONResponse(content="Query executed successfully", status_code=200)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
