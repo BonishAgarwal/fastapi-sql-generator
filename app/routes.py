@@ -6,6 +6,8 @@ from app.pydantic_model import InstructionRequest
 
 router = APIRouter()
 
+conn = get_connection()
+
 @router.get("/")
 async def root():
     return {"message": "Hello World"}
@@ -37,7 +39,6 @@ async def process_professor_instruction(request: InstructionRequest):
 
 @router.post("/add_student")
 def add_student(query: str):
-    conn = get_connection()
     try:
         with conn.cursor() as cur:  
             cur.execute(query)
@@ -49,7 +50,6 @@ def add_student(query: str):
 
 @router.get("/get_student")
 def get_student(query: str):
-    conn = get_connection()
     try:
         with conn.cursor() as cur:  
             cur.execute(query)
@@ -60,7 +60,6 @@ def get_student(query: str):
 
 @router.post("/add_score")
 def add_score(query: str):
-    conn = get_connection()
     try:
         with conn.cursor() as cur:  
             cur.execute(query)
@@ -71,7 +70,6 @@ def add_score(query: str):
 
 @router.get("/get_scores")
 def get_scores(query: str):
-    conn = get_connection()
     try:
         with conn.cursor() as cur:  
             cur.execute(query)
@@ -82,7 +80,6 @@ def get_scores(query: str):
 
 @router.get("/get_student_subjects")
 def get_student_subjects(query: str):
-    conn = get_connection()
     try:
         with conn.cursor() as cur:  
             cur.execute(query)
@@ -104,7 +101,6 @@ def summarize_scores(query: str):
 
 @router.post("/execute_query")
 def execute_query(query: str):
-    conn = get_connection()
     try:
         with conn.cursor() as cur:  
             cur.execute(query)

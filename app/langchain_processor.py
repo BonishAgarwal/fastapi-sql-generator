@@ -42,4 +42,5 @@ async def process_instruction(instruction: str) -> Tuple[str, dict]:
                         )
     response = llm(prompt.format(instruction=instruction))
     res = json.loads(response.content)
+
     return res["intent"], res["sql_query"]
